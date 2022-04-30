@@ -1,38 +1,200 @@
-.App {
-  text-align: center;
-}
+/* HOME CSS */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content:flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 50px;
+  background-color: white;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-item {
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
+.body-home {
+  background-color: rgba(105, 104, 104, 0.6);
+  height: 100%;
+  height: 100vh;
+}
+
+.background-image::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-image: url('https://www.thewallpaperpeople.com.au/images/detailed/8/JL1398M_Marvel_Comic_Panel_XL_WallpaperMural.jpg');
+  background-size: cover;
+  filter: grayscale(100%);
+  opacity: 0.6;
+  animation: background-image 60s linear infinite alternate;
+}
+
+@keyframes background-image {
   from {
-    transform: rotate(0deg);
+    transform: scale(1.5) translateX(150px);
   }
   to {
-    transform: rotate(360deg);
-  }
+    transform: scale(1.5) translateX(-150px);
+  }  
+}
+
+
+.layer {
+  position: relative;  
+}
+
+.featured-banner {
+  width: 100%;
+  height: 20vh;
+  background-color: sandybrown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1000%;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10vh;
+}
+
+.column-welcome {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 300px;
+  border: solid lightgrey 2px;
+  background-color: white;
+}
+
+.red-banner {
+  height: 5%;
+  background-color: red;
+}
+
+.column-welcome-text {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.button-container {
+  flex-direction: column;
+}
+
+.column-button-one {
+  height: 250px;
+  width: 250px;
+  background-image: url('https://dygtyjqp7pi0m.cloudfront.net/i/28280/24710348_2.jpg?v=8D380CD385EF490');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.column-button-two {
+  height: 250px;
+  width: 250px;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/09127859-583c-49ab-87e9-cd4fdb84b65c/deh1mqm-39e54cd3-d775-4297-84f8-0d635f1aa77b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzA5MTI3ODU5LTU4M2MtNDlhYi04N2U5LWNkNGZkYjg0YjY1Y1wvZGVoMW1xbS0zOWU1NGNkMy1kNzc1LTQyOTctODRmOC0wZDYzNWYxYWE3N2IucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.VkVjtSyJUAwgpvw0Mj4FrFp5EjeqGTsO1M42dVPGc48');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+}
+
+.column-welcome, .column-button-one, .column-button-two {
+  margin: 5px;
+}
+
+.column-text-container {
+  width:100%;
+  height: 15%;
+  background-color: rgb(255, 255, 255, 0.8);
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  position: relative;
+  bottom: -85%;
+}
+
+.column-text {
+  font-weight: bold;
+  color: black;
+}
+
+/* INDEX CSS */
+
+.search-container {
+  background-color: orange;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.searchbar-container, .searchselect-container {
+  display: flex;
+  width: 40vw;
+  justify-content: center;
+  align-items: center;  
+}
+
+.search-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.searchbar, .searchselect {
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
+}
+
+.search-button {
+  border-radius: 10px;
+  height: 30%;
+}
+
+.index-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  border: 2px solid red;
+  height: 200px;
+  width: 200px;
+  margin: 5px;
+}
+
+.card-names-container {
+  display: flex;
+  justify-content:center;
+  align-items: flex-end;
+  position:relative;
+  height: 100%;
+  width: 100%; 
+}
+
+.card-name {
+  background-color: red;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.card-image {
+  object-fit: cover;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  
 }

@@ -1,0 +1,9 @@
+//get ALL heroes
+
+GET https://akabab.github.io/superhero-api/api/all.json
+
+###
+
+//get heroes powerstats
+
+https://akabab.github.io/superhero-api/api/powerstats/4.json
