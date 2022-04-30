@@ -15,6 +15,9 @@ function NavBar() {
         <Link to="/battleworld" className="navbar-item">
           Battleworld
         </Link>
+        <Link to="/about" className="navbar-item">
+          About
+        </Link>
       </div>
     </>
   );

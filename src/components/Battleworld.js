@@ -4,7 +4,7 @@ function Battleworld() {
   return (
     <>
       <NavBar />
-      <div>Battleworld</div>
+      <div>Battleworld Page</div>
     </>
   );
 }
