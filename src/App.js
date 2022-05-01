@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Index from "./components/Index";
 import Battleworld from "./components/Battleworld";
 import About from "./components/About";
+import Show from "./components/Show";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/index" element={<Index />} />
           <Route path="/battleworld" element={<Battleworld />} />
           <Route path="/about" element={<About />} />
+          <Route path="/show" element={<Show />} />
         </Routes>
       </BrowserRouter>
     </div>
