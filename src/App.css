@@ -204,3 +204,36 @@
   border: 3px solid black;
   padding: 10px;
 }
+
+/* SHOW CSS */
+
+.show-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 5px solid black;
+}
+
+.show-column-1 {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  border: 5px blue solid;
+  width: 40%;
+}
+
+.show-column-2 {
+  display: flex;
+  flex-direction: column;
+  border: 5px red solid;
+  height: 90vh;
+  width: 50%;
+}
+
+.show-image {
+  object-fit: cover;
+  height: 70%;
+  width: 100%;
+}

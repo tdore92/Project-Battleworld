@@ -14,9 +14,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/index" element={<Index />} />
+          <Route path="/index/:heroID" element={<Show />} />
           <Route path="/battleworld" element={<Battleworld />} />
           <Route path="/about" element={<About />} />
-          <Route path="/show" element={<Show />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import NavBar from "../common/NavBar";
 import axios from "axios";
+import Card from "./Card";
 
-function Index() {
+function Index({ id }) {
   const [heroes, setHeroes] = React.useState(null);
   const [selectValue, setSelectValue] = React.useState("All");
   const [searchTerm, setSearchTerm] = React.useState("");
@@ -79,16 +80,7 @@ function Index() {
         </div>
         <div className="index-container">
           {filteredHeroes ? (
-            filteredHeroes.map((hero) => (
-              <div key={hero.id} className="card-container">
-                <div>
-                  <img src={hero.images.md} alt="/" className="card-image" />
-                </div>
-                <div className="card-names-container">
-                  <div className="card-name">{hero.name}</div>
-                </div>
-              </div>
-            ))
+            filteredHeroes.map((hero) => <Card key={hero.id} {...hero} />)
           ) : (
             <div>loading</div>
           )}
