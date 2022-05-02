@@ -216,12 +216,23 @@
   border: 5px solid black;
 }
 
+.show-column-1-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-image-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .show-column-1 {
   display: flex;
   flex-direction: column;
   height: 90vh;
   border: 5px blue solid;
   width: 40%;
+  overflow: scroll;
 }
 
 .show-column-2 {
@@ -233,7 +244,33 @@
 }
 
 .show-image {
-  object-fit: cover;
   height: 70%;
   width: 100%;
+}
+
+.stats-column {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: xx-large;
+  padding: 10px;
+}
+
+.show-related-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  height: 40%;
+}
+
+.show-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.show-button {
+  width: 60%;
+  padding: 5px;
 }

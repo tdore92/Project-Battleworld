@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 function Show() {
   const { heroID } = useParams();
   const [hero, setHero] = React.useState(null);
+  const [relatedHeroes, setRelatedHeroes] = React.useState(null);
+
+  // axios request for parameter ID
 
   React.useEffect(() => {
     const getData = async () => {
@@ -16,6 +19,18 @@ function Show() {
     };
     getData();
   }, [heroID]);
+
+  // axios request for related data
+
+  React.useEffect(() => {
+    const getRelatedData = async () => {
+      const responseRelated = await axios.get(
+        "https://akabab.github.io/superhero-api/api/all.json"
+      );
+      setRelatedHeroes(responseRelated.data);
+    };
+    getRelatedData();
+  }, []);
 
   const handleClick = (event) => {
     console.log("click is " + event.target.value);
@@ -31,22 +46,44 @@ function Show() {
             <div>
               <strong>{hero.name}</strong>
             </div>
-            <div>AKA: {hero.biography.fullName}</div>
+            <div>{hero.biography.fullName}</div>
+            {/**/}
             <div>
-              Appearance:
               {hero.appearance.gender} {hero.appearance.race}
             </div>
+            <div>
+              <div>
+                <strong>Biography</strong>
+              </div>
+            </div>
             <div>Morality: {hero.biography.alignment}</div>
+            <div>Weight: {hero.appearance.weight}</div>
+            <div>Height: {hero.appearance.height}</div>
+            <div>Eye Colour: {hero.appearance.eyeColor}</div>
+            <div>Hair Colour: {hero.appearance.hairColor}</div>
+            <br />
+            <div>Occupation: {hero.work.occupation}</div>
+            <div>Base: {hero.work.base}</div>
+            <div>Affiliations: {hero.connections.groupAffiliation}</div>
           </div>
+
+          {/**/}
           <div className="show-column-2">
-            <h2>Stats</h2>
-            <div>Intelligence: {hero.powerstats.intelligence}</div>
-            <div>Strength: {hero.powerstats.strength}</div>
-            <div>Speed: {hero.powerstats.speed}</div>
-            <div>Durability: {hero.powerstats.durability}</div>
-            <div>Power: {hero.powerstats.power}</div>
-            <div>Combat: {hero.powerstats.combat}</div>
-            <button onClick={handleClick}>Select Challenger</button>
+            <div className="stats-column">
+              <div>Stats</div>
+              <div>Intelligence: {hero.powerstats.intelligence}</div>
+              <div>Strength: {hero.powerstats.strength}</div>
+              <div>Speed: {hero.powerstats.speed}</div>
+              <div>Durability: {hero.powerstats.durability}</div>
+              <div>Power: {hero.powerstats.power}</div>
+              <div>Combat: {hero.powerstats.combat}</div>
+              <div className="show-button-container">
+                <button className="show-button" onClick={handleClick}>
+                  Select Challenger
+                </button>
+              </div>
+            </div>
+            <div className="show-related-column">Related Heroes Section</div>
           </div>
         </div>
       ) : (
