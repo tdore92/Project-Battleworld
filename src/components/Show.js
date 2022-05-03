@@ -8,8 +8,9 @@ function Show() {
   const { heroID } = useParams();
   const [hero, setHero] = React.useState(null);
   const [relatedHeroes, setRelatedHeroes] = React.useState(null);
+  const [storedHero, setStoredHero] = React.useState(null);
 
-  // axios request for parameter ID
+  // axios request for Parameter ID
 
   React.useEffect(() => {
     const getData = async () => {
@@ -21,7 +22,7 @@ function Show() {
     getData();
   }, [heroID]);
 
-  // axios request for related data
+  // axios request for Related Heroes data
 
   React.useEffect(() => {
     const getRelatedData = async () => {
@@ -37,80 +38,98 @@ function Show() {
 
   const filteredRelatedHeroes = relatedHeroes?.filter((relatedHero) => {
     return (
-      relatedHero.powerstats.intelligence === hero.powerstats.intelligence &&
-      relatedHero.name !== hero.name
+      relatedHero.name !== hero.name &&
+      relatedHero.biography.alignment === hero.biography.alignment &&
+      relatedHero.biography.publisher === hero.biography.publisher
     );
   });
-
-  console.group(filteredRelatedHeroes);
 
   // button to add character to battleworld
 
   const handleClick = (event) => {
-    console.log("click is " + event.target.value);
+    setStoredHero(hero);
   };
+
+  console.log(storedHero);
 
   return (
     <>
       <NavBar />
       {hero ? (
         <div className="show-container">
-          <div className="show-column-1">
-            <img src={hero.images.lg} alt="/" className="show-image" />
-            <div>
-              <strong>{hero.name}</strong>
-            </div>
-            <div>{hero.biography.fullName}</div>
-            {/**/}
-            <div>
-              {hero.appearance.gender} {hero.appearance.race}
-            </div>
-            <div>
-              <div>
-                <strong>Biography</strong>
+          <div className="show-image-container">
+            <div className="show-image-column">
+              <img src={hero.images.lg} alt="/" className="show-image" />
+              <div className="show-names-column">
+                <div className="show-name-text">{hero.name}</div>
+                <div className="show-alias-text">{hero.biography.fullName}</div>
               </div>
             </div>
-            <div>Morality: {hero.biography.alignment}</div>
-            <div>Weight: {hero.appearance.weight}</div>
-            <div>Height: {hero.appearance.height}</div>
-            <div>Eye Colour: {hero.appearance.eyeColor}</div>
-            <div>Hair Colour: {hero.appearance.hairColor}</div>
-            <br />
-            <div>Occupation: {hero.work.occupation}</div>
-            <div>Base: {hero.work.base}</div>
-            <div>Affiliations: {hero.connections.groupAffiliation}</div>
           </div>
-
           {/**/}
-          <div className="show-column-2">
-            <div className="stats-column">
-              <div>Stats</div>
-              <div>Intelligence: {hero.powerstats.intelligence}</div>
-              <div>Strength: {hero.powerstats.strength}</div>
-              <div>Speed: {hero.powerstats.speed}</div>
-              <div>Durability: {hero.powerstats.durability}</div>
-              <div>Power: {hero.powerstats.power}</div>
-              <div>Combat: {hero.powerstats.combat}</div>
+          <div className="show-data-row">
+            <div className="show-column-1">
+              <div className="show-column-1-headers">Occupation</div>
+              <div>{hero.work.occupation}</div>
+
+              <div className="show-column-1-headers">Base</div>
+              <div>{hero.work.base}</div>
+
+              <div className="show-column-1-headers">Affiliations</div>
+              <div>{hero.connections.groupAffiliation}</div>
+
+              <div className="show-column-1-headers">Relatives</div>
+              <div>{hero.connections.relatives}</div>
+            </div>
+
+            {/**/}
+            <div className="show-column-2">
+              <div className="single-stat-container">
+                <div className="stats-text-container">Intelligence ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.intelligence}
+                </div>
+              </div>
+              <div className="single-stat-container">
+                <div className="stats-text-container">Strength ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.strength}
+                </div>
+              </div>
+              <div className="single-stat-container">
+                <div className="stats-text-container">Speed ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.speed}
+                </div>
+              </div>
+              <div className="single-stat-container">
+                <div className="stats-text-container">Durability ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.durability}
+                </div>
+              </div>
+              <div className="single-stat-container">
+                <div className="stats-text-container">Power ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.power}
+                </div>
+              </div>
+              <div className="single-stat-container">
+                <div className="stats-text-container">Combat ...</div>
+                <div className="stats-number-container">
+                  {hero.powerstats.combat}
+                </div>
+              </div>
               <div className="show-button-container">
                 <button className="show-button" onClick={handleClick}>
-                  Select Challenger
+                  Select Character
                 </button>
               </div>
             </div>
-            <div className="show-related-column">
-              <div className="related-title-container">
-                <div>RELATED</div>
-              </div>
-              <div className="show-related-container">
-                {filteredRelatedHeroes ? (
-                  filteredRelatedHeroes.map((relatedHero) => (
-                    <RelatedCard key={relatedHero.id} {...relatedHero} />
-                  ))
-                ) : (
-                  <p>loading</p>
-                )}
-              </div>
-            </div>
+          </div>
+
+          <div className="show-footer-text">
+            <div>{hero.biography.publisher}&copy;</div>
           </div>
         </div>
       ) : (

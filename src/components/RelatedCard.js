@@ -7,7 +7,7 @@ function RelatedCard({ id, images }) {
         <div key={id}>
           <Link to={`/index/${id}`}>
             <div>
-              <img src={images.md} alt="/" className="related-card-image" />
+              <img src={images.sm} alt="/" className="related-card-image" />
             </div>
           </Link>
         </div>
