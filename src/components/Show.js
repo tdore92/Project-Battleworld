@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import NavBar from "../common/NavBar";
 import { useParams } from "react-router-dom";
+import RelatedCard from "./RelatedCard";
 
 function Show() {
   const { heroID } = useParams();
@@ -31,6 +32,19 @@ function Show() {
     };
     getRelatedData();
   }, []);
+
+  // filtered related characters by ID match
+
+  const filteredRelatedHeroes = relatedHeroes?.filter((relatedHero) => {
+    return (
+      relatedHero.powerstats.intelligence === hero.powerstats.intelligence &&
+      relatedHero.name !== hero.name
+    );
+  });
+
+  console.group(filteredRelatedHeroes);
+
+  // button to add character to battleworld
 
   const handleClick = (event) => {
     console.log("click is " + event.target.value);
@@ -83,7 +97,20 @@ function Show() {
                 </button>
               </div>
             </div>
-            <div className="show-related-column">Related Heroes Section</div>
+            <div className="show-related-column">
+              <div className="related-title-container">
+                <div>RELATED</div>
+              </div>
+              <div className="show-related-container">
+                {filteredRelatedHeroes ? (
+                  filteredRelatedHeroes.map((relatedHero) => (
+                    <RelatedCard key={relatedHero.id} {...relatedHero} />
+                  ))
+                ) : (
+                  <p>loading</p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       ) : (

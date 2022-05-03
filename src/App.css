@@ -213,7 +213,6 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  border: 5px solid black;
 }
 
 .show-column-1-container {
@@ -229,40 +228,33 @@
 .show-column-1 {
   display: flex;
   flex-direction: column;
+  border: 1px blue solid;
+  width: 45%;
   height: 90vh;
-  border: 5px blue solid;
-  width: 40%;
   overflow: scroll;
 }
 
 .show-column-2 {
   display: flex;
   flex-direction: column;
-  border: 5px red solid;
-  height: 90vh;
+  border: 1px red solid;
   width: 50%;
+  height: 90vh;
 }
 
 .show-image {
-  height: 70%;
+  height: 45%;
   width: 100%;
+  object-fit: cover;
 }
 
 .stats-column {
-  height: 60%;
+  height: 45%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: xx-large;
   padding: 10px;
-}
-
-.show-related-column {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: orange;
-  height: 40%;
 }
 
 .show-button-container {
@@ -274,3 +266,49 @@
   width: 60%;
   padding: 5px;
 }
+
+.show-related-column {
+  display: flex;
+  background-color: orange;
+  height: 55%;
+  overflow: scroll;
+  flex-direction: column;
+}
+
+.related-title-container {
+  background-color: white;
+  text-align: center;
+}
+
+.show-related-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.show-card {
+  border: red solid 5px;
+  width: 300px;
+  height: 200px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.related-card-image {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
+  
+}
+
+
+
+
+
+
+

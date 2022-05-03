@@ -5,5 +5,5 @@ GET {{baseUrl}}/all.json
 ###
 
 //get heroes by ID
-@heroID = 200
+@heroID = 3
 {{baseUrl}}/id/{{heroID}}.json
