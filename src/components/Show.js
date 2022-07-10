@@ -2,15 +2,12 @@ import React from "react";
 import axios from "axios";
 import NavBar from "../common/NavBar";
 import { useParams } from "react-router-dom";
-import RelatedCard from "./RelatedCard";
 import RelatedShow from "./RelatedShow";
 
 function Show() {
   const { heroID } = useParams();
   const [hero, setHero] = React.useState(null);
-  const [storedHero, setStoredHero] = React.useState(null);
-  const [max, setMax] = React.useState(0);
-  const [maxKey, setMaxKey] = React.useState("");
+  let heroSelectionArray = [];
 
   // axios request for Parameter ID
 
@@ -24,16 +21,14 @@ function Show() {
     getData();
   }, [heroID]);
 
-  // filtered related characters by ID match
-
-  //const filteredRelatedHeroes = relatedHeroes?.filter((relatedHero) => {
-  //return relatedHero.name !== hero.name && relatedHero.powerstats;
-  //});
-
   // button to add character to battleworld
 
   const handleClick = (event) => {
-    setStoredHero(hero);
+    const heroSelection = JSON.parse(window.localStorage.getItem("hero")) || [];
+    heroSelectionArray = [...heroSelectionArray, hero];
+    heroSelection.push(hero);
+    localStorage.setItem("hero", JSON.stringify(heroSelection));
+    console.log(`${hero.name} has been selected for Battleworld`);
   };
 
   return (

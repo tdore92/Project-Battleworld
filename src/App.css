@@ -219,12 +219,11 @@
   background-size: cover;
 }
 
-.show-page {
+.show-page::before {
   display: flex;
   justify-content: center;
-  
-  
   background-color: lightgray;
+  opacity: 0.6;
 }
 
 .show-page-container {
