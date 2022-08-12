@@ -25,7 +25,7 @@ function Battleworld() {
 
   // generate random number to match id
 
-  let enemyId = Math.floor(Math.random());
+  let enemyId = Math.floor(Math.random() * (563 - 1)) + 1;
   console.log(enemyId);
 
   // filter enemy id by enemyId variable
@@ -38,6 +38,27 @@ function Battleworld() {
 
   //COMPARE
 
+  const handleClick = (e, value) => {
+    const userSelection = value;
+    console.log(userSelection);
+    const enemySelection = 50;
+
+    compareStats(userSelection, enemySelection);
+  };
+
+  const compareStats = (userStat, enemyStat) => {
+    const playerWins = userStat > enemyStat;
+    const draw = userStat === enemyStat;
+
+    if (playerWins) {
+      console.log("player wins!");
+    } else if (draw) {
+      console.log("It's a draw! Pick another stat.");
+    } else {
+      console.log("player lost!");
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -45,11 +66,73 @@ function Battleworld() {
         <div className="battleworld-hero-container">
           {selectedHero ? (
             selectedHero.map((hero) => (
-              <div key={Math.random()}>
+              <div key={hero.id}>
                 <div>
                   <div>
                     <div>{hero.name}</div>
                     <div>{hero.biography.fullName}</div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">
+                        Intelligence ...
+                      </div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) =>
+                          handleClick(e, hero.powerstats.intelligence)
+                        }
+                      >
+                        {hero.powerstats.intelligence}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Strength ...</div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) =>
+                          handleClick(e, hero.powerstats.strength)
+                        }
+                      >
+                        {hero.powerstats.strength}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Speed ...</div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) => handleClick(e, hero.powerstats.speed)}
+                      >
+                        {hero.powerstats.speed}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Durability ...</div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) =>
+                          handleClick(e, hero.powerstats.durability)
+                        }
+                      >
+                        {hero.powerstats.durability}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Power ...</div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) => handleClick(e, hero.powerstats.power)}
+                      >
+                        {hero.powerstats.power}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Combat ...</div>
+                      <div
+                        className="stats-number-container"
+                        onClick={(e) => handleClick(e, hero.powerstats.combat)}
+                      >
+                        {hero.powerstats.combat}
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <hr />
@@ -61,7 +144,55 @@ function Battleworld() {
         </div>
         <div className="battleworld-hero-container">
           {filteredEnemy ? (
-            filteredEnemy.map((enemy) => <div key={enemy.id}>{enemy.name}</div>)
+            filteredEnemy.map((enemy) => (
+              <div key={enemy.id}>
+                <div>
+                  <div>
+                    <div>{enemy.name}</div>
+                    <div>{enemy.biography.fullName}</div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">
+                        Intelligence ...
+                      </div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.intelligence}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Strength ...</div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.strength}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Speed ...</div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.speed}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Durability ...</div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.durability}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Power ...</div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.power}
+                      </div>
+                    </div>
+                    <div className="single-stat-container">
+                      <div className="stats-text-container">Combat ...</div>
+                      <div className="stats-number-container">
+                        {enemy.powerstats.combat}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            ))
           ) : (
             <div>loading</div>
           )}
